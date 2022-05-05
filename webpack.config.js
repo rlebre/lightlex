@@ -4,7 +4,8 @@ const path = require('path');
 
 const plugins = [
   new HtmlWebpackPlugin({
-    template: 'public/index.html'
+    template: 'public/index.html',
+    cache: false
   }),
   new CopyWebpackPlugin({
     patterns: [
@@ -18,6 +19,7 @@ const tsLoaders = [{ loader: 'ts-loader', options: { allowTsInNodeModules: true 
 const jsLoaders = [];
 
 const config = {
+  cache: false,
   entry: ['./src/index.ts'],
   mode: 'development',
   output: {
@@ -25,10 +27,12 @@ const config = {
     filename: 'bundle.js'
   },
   devServer: {
-    open: true,
     host: '0.0.0.0',
     port: process.env.PORT | 3000,
-    static: path.resolve(__dirname, 'public')
+    static: path.resolve(__dirname, 'public'),
+    headers: {
+      'Cache-Control': 'no-store'
+    }
   },
   plugins,
   module: {

@@ -15,4 +15,8 @@ export default class Movies extends Lightning.Component {
       }
     };
   }
+
+  _active() {
+    this.widgets.menu.visible = true;
+  }
 }

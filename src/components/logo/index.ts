@@ -6,8 +6,7 @@ export default class Logo extends Lightning.Component {
       src: Utils.asset('images/lightlex-light.png'),
       x: 1920 / 2,
       y: 1080 / 2,
-      mount: 0.5,
-      alpha: 0
+      mount: 0.5
     };
   }
 }

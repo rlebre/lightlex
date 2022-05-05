@@ -1,4 +1,5 @@
 import { Router, Utils } from '@lightningjs/sdk';
+import { Menu, MenuWithBackButton } from './components/widgets';
 import { Colors } from './constants/colors';
 import routes from './router/routes';
 
@@ -16,7 +17,21 @@ export default class App extends Router.App {
         rect: true,
         color: Colors.BACKGROUND
       },
-      ...super._template()
+      ...super._template(),
+      Widgets: {
+        Menu: {
+          type: Menu,
+          zIndex: 99,
+          visible: false
+        },
+        MenuWithBackButton: {
+          type: MenuWithBackButton,
+          x: 68,
+          y: 30,
+          zIndex: 99,
+          visible: true
+        }
+      }
     };
   }
 

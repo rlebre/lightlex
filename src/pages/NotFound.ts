@@ -8,8 +8,7 @@ export default class Movies extends Lightning.Component {
       h: 1080,
 
       Logo: {
-        type: Logo,
-        alpha: 1
+        type: Logo
       },
 
       Description: {

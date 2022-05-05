@@ -5,16 +5,20 @@ import NotFound from '../pages/NotFound';
 const routes = [
   {
     path: 'home',
-    component: Main
+    component: Main,
+    widgets: ['Menu']
   },
   {
     path: 'movies',
-    component: Movies
+    component: Movies,
+    widgets: ['Menu']
   },
   {
     path: '$',
     // component: Splash
-    component: NotFound
+    component: Main,
+    // widgets: ['MenuWithBackButton']
+    widgets: ['Menu']
   },
   {
     path: '*',

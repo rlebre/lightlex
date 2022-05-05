@@ -6,7 +6,8 @@ export default class Splash extends Lightning.Component {
   static _template() {
     return {
       Logo: {
-        type: Logo
+        type: Logo,
+        alpha: 0
       },
       Spinner: {
         type: Spinner
