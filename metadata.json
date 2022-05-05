@@ -2,5 +2,5 @@
   "name": "Lightlex",
   "identifier": "com.ruilebre.lightlex",
   "version": "1.0.0",
-  "icon": "./static/icon.png"
+  "icon": "./public/lightlex-icon.png"
 }

@@ -14,8 +14,11 @@ const plugins = [
   })
 ];
 
+const tsLoaders = [{ loader: 'ts-loader', options: { allowTsInNodeModules: true } }];
+const jsLoaders = [];
+
 const config = {
-  entry: ['./src/index.js'],
+  entry: ['./src/index.ts'],
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -31,8 +34,14 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(ts|tsx)$/i,
+        exclude: ['/node_modules/'],
+        use: tsLoaders
+      },
+      {
         test: /\.m?js$/,
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: jsLoaders
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -45,7 +54,7 @@ const config = {
     ]
   },
   resolve: {
-    extensions: ['.js']
+    extensions: ['.ts', '.js']
   }
 };
 

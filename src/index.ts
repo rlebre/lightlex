@@ -1,5 +1,5 @@
 import { Launch } from '@lightningjs/sdk';
-import App from './App.js';
+import App from './App';
 import { appData, appSettings, platformSettings } from './settings';
 
 // launch the application with custom settings
