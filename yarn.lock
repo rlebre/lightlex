@@ -44,6 +44,13 @@
     url-polyfill "^1.1.10"
     whatwg-fetch "^3.0.0"
 
+"@lightningjs/ui-components@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@lightningjs/ui-components/-/ui-components-1.2.1.tgz#1fcbef9879064702912db65cd05d70a0d0ef8715"
+  integrity sha512-qhxIC9loCLKpn4ryRLuJzvO4+KeHqudVTJRGfNXKPVVNLhNpWLQCqcMaRSN4AN1hO1VZZ3CwvhXJOte8+pym9Q==
+  dependencies:
+    debounce "^1.2.1"
+
 "@lightningjs/ui@^1.2.5":
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/@lightningjs/ui/-/ui-1.2.5.tgz#589f645ee390509cdaefac6df88b638a3ed748a0"
@@ -805,6 +812,11 @@ css-what@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha512-HTUrgRJ7r4dsZKU6GjmpfRK1O76h97Z8MfS1G0FozR+oF2kG6Vfe8JE6zwrkbxigziPHinCJ+gCPjA9EaBDtRw==
+
+debounce@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
+  integrity sha512-XRRe6Glud4rd/ZGQfiV1ruXSfbvfJedlV9Y6zOlP+2K04vBYiJEte6stfFkCP03aMnY5tsipamumUjL14fofug==
 
 debug@2.6.9:
   version "2.6.9"

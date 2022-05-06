@@ -1,3 +1,5 @@
+import Discover from '../pages/Discover';
+import LiveTV from '../pages/LiveTv';
 import Main from '../pages/Main';
 import Movies from '../pages/Movies';
 import NotFound from '../pages/NotFound';
@@ -11,6 +13,16 @@ const routes = [
   {
     path: 'movies',
     component: Movies,
+    widgets: ['Menu']
+  },
+  {
+    path: 'livetv',
+    component: LiveTV,
+    widgets: ['Menu']
+  },
+  {
+    path: 'discover',
+    component: Discover,
     widgets: ['Menu']
   },
   {

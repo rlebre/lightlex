@@ -16,7 +16,8 @@
   "dependencies": {
     "@lightningjs/core": "^2.6.0",
     "@lightningjs/sdk": "^4.8.3",
-    "@lightningjs/ui": "^1.2.5"
+    "@lightningjs/ui": "^1.2.5",
+    "@lightningjs/ui-components": "^1.2.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",

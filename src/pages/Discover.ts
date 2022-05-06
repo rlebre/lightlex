@@ -1,6 +1,6 @@
 import { Lightning, Router } from '@lightningjs/sdk';
 
-export default class Movies extends Lightning.Component {
+export default class Discover extends Lightning.Component {
   static _template() {
     return {
       w: 1980,
@@ -8,7 +8,7 @@ export default class Movies extends Lightning.Component {
       Lists: {
         x: 300,
         text: {
-          text: 'MOVIES',
+          text: 'DISCOVER',
           fontSize: 25,
           lineHeight: 55,
           paddingLeft: 0,

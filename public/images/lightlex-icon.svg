@@ -1,9 +1,5 @@
-<svg width="250" height="167" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.0">
- <g>
-  <title>Layer 1</title>
-  <polygon stroke="null" stroke-width="0" fill="#565656" points="235.35076904296875,7.079195976257324 201.9517822265625,7.079195976257324 168.55279541015625,82.30298614501953 201.9517822265625,157.5267333984375 235.27398681640625,157.5267333984375 201.9517822265625,82.30298614501953 " id="svg_6"/>
-  <polygon stroke="null" id="svg_7" fill="#e5a10d" points="122.2371826171875,6.335543632507324 155.65277099609375,6.335543632507324 192.52508544921875,82.22611236572266 155.65277099609375,158.11666870117188 122.2371826171875,158.11666870117188 159.10955810546875,82.22611236572266 " class="st0"/>
-  <text stroke-width="0" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Reem Kufi'" font-size="200" id="svg_11" y="154.85104" x="-9.90398" fill="#e5a10d">L</text>
- </g>
-
+<svg width="250" height="167" viewBox="0 0 250 167" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M227 12H193.5L160 85L193.5 158H226.923L193.5 85L227 12Z" fill="#565656"/>
+<path d="M122 12H155.754L193 85L155.754 158H122L159.246 85L122 12Z" fill="#E5A10D"/>
+<path d="M13.6 11.6H39.8V132.6H110.2V158H13.6V11.6Z" fill="#E5A10D"/>
 </svg>

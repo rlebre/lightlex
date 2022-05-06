@@ -1,6 +1,6 @@
 import { Lightning, Router } from '@lightningjs/sdk';
 import { Colors } from '../../constants/colors';
-import Logo from '../logo';
+import CollapsableLogo from '../logo/CollapsableLogo';
 import MenuItem from './MenuItem';
 
 interface MenuItemInterface {
@@ -13,43 +13,40 @@ export default class Menu extends Lightning.Component {
   static _template() {
     return {
       Wrapper: {
-        w: 250,
+        w: 50,
         h: 1080,
         rect: true,
         color: Colors.DARK_GRAY,
 
         flex: {
           direction: 'column',
-          paddingLeft: 40,
+          paddingLeft: 20,
+          paddingRight: 20,
           justifyContent: 'space-between',
           alignContent: 'flex-start',
           wrap: true
         },
 
         Logo: {
-          type: Logo,
+          type: CollapsableLogo,
           y: 50,
           x: 0,
-          w: (w: number) => w - 100,
-          h: 30,
+          h: 25,
           mountX: 0
         },
 
         MenuItems: {
           w: (w: number) => w - 100,
-          h: 30,
-          alignSelf: 'stretch',
           Items: {
             flex: {
-              direction: 'column',
-              alignContent: 'center'
-            },
-            flexItem: { margin: 50 }
+              direction: 'column'
+            }
           },
           Focus: {
             rect: true,
             colorLeft: Colors.ORANGE,
             colorRight: Colors.ORANGE,
+            x: 40,
             h: 6,
             shader: { type: Lightning.shaders.RoundedRectangle, radius: 3 },
             transitions: {
@@ -61,11 +58,7 @@ export default class Menu extends Lightning.Component {
 
         Settings: {
           y: -50,
-          text: {
-            text: 'Settings',
-            fontSize: 25,
-            fontStyle: 'bold'
-          }
+          texture: Lightning.Tools.getSvgTexture('icons/settings.svg', 40, 40)
         }
       }
     };
@@ -79,22 +72,22 @@ export default class Menu extends Lightning.Component {
     this._items = [
       {
         label: 'Home',
-        icon: '',
+        icon: 'home',
         route: 'home'
       },
       {
         label: 'Live TV',
-        icon: '',
-        route: 'live'
+        icon: 'tv',
+        route: 'livetv'
       },
       {
         label: 'Movies & Shows',
-        icon: '',
+        icon: 'movies',
         route: 'movies'
       },
       {
         label: 'Discover',
-        icon: '',
+        icon: 'discover',
         route: 'discover'
       }
     ] as MenuItemInterface[];
@@ -105,6 +98,7 @@ export default class Menu extends Lightning.Component {
         label: item.label,
         selected: false,
         id: item.route,
+        icon: item.icon,
         flexItem: { marginBottom: 10 }
       };
     });
@@ -123,7 +117,6 @@ export default class Menu extends Lightning.Component {
   }
 
   _handleDown() {
-    console.log(this._index);
     if (this._index < this.tag('Items').children.length - 1) {
       this._select(1);
     }
@@ -135,12 +128,34 @@ export default class Menu extends Lightning.Component {
   }
 
   _focus() {
+    const list = this.tag('Items');
+    for (let i = 0; i < list.children.length; i++) {
+      list.children[i].collapsed = false;
+    }
+
+    this.tag('Wrapper').patch({
+      smooth: { w: 250 }
+    });
+
+    this.tag('Logo').collapsed = false;
+
     this.tag('Focus').w = 0;
     this.tag('Focus').setSmooth('alpha', 1);
     this._animateToSelected();
   }
 
   _unfocus() {
+    const list = this.tag('Items');
+    this.tag('Wrapper').patch({
+      smooth: { w: 50 }
+    });
+
+    this.tag('Logo').collapsed = true;
+
+    for (let i = 0; i < list.children.length; i++) {
+      list.children[i].collapsed = true;
+    }
+
     this.tag('Focus').setSmooth('alpha', 0);
   }
 
@@ -153,7 +168,7 @@ export default class Menu extends Lightning.Component {
 
   _animateToSelected() {
     this.tag('Focus').patch({
-      smooth: { y: this.activeItem.finalY + this.activeItem.finalH - 5, w: this.activeItem.finalW }
+      smooth: { y: this.activeItem.finalY + 15, w: this.activeItem.finalW }
     });
   }
 

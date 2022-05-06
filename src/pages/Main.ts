@@ -8,7 +8,7 @@ export default class Main extends Lightning.Component {
       Lists: {
         x: 300,
         text: {
-          text: 'HOMsdE',
+          text: 'HOME',
           fontSize: 25,
           lineHeight: 55,
           paddingLeft: 0,

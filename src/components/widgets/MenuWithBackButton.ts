@@ -46,7 +46,6 @@ export default class MenuWithBackButton extends Lightning.Component {
   }
 
   _handleEnter() {
-    console.log('back button enter');
     Router.back();
   }
 }
