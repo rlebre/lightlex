@@ -8,7 +8,7 @@ export default class Discover extends Lightning.Component {
       Lists: {
         x: 300,
         text: {
-          text: 'DISCOVER',
+          text: 'DETAILS',
           fontSize: 25,
           lineHeight: 55,
           paddingLeft: 0,
@@ -24,14 +24,6 @@ export default class Discover extends Lightning.Component {
   }
 
   _handleLeft() {
-    Router.focusWidget('menu');
-  }
-
-  _handleBack() {
-    Router.back();
-  }
-
-  _getFocused() {
-    return this.tag('Lists');
+    Router.focusWidget('MenuWithBackButton');
   }
 }

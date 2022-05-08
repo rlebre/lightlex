@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const DotenvWebpackPlugin = require('dotenv-webpack');
 const path = require('path');
 
 const plugins = [
@@ -12,7 +13,8 @@ const plugins = [
       { from: path.resolve(__dirname, './public/images'), to: 'images' },
       { from: path.resolve(__dirname, './public/fonts'), to: 'fonts' }
     ]
-  })
+  }),
+  new DotenvWebpackPlugin()
 ];
 
 const tsLoaders = [{ loader: 'ts-loader', options: { allowTsInNodeModules: true } }];

@@ -5,7 +5,7 @@ export const appData = {};
 export const appSettings = {
   version: pkg.version,
   stage: {
-    clearColor: '0x000000'
+    clearColor: '0xffffff'
   },
   debug: false
 };

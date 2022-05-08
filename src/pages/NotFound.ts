@@ -1,4 +1,4 @@
-import { Lightning } from '@lightningjs/sdk';
+import { Lightning, Router } from '@lightningjs/sdk';
 import Logo from '../components/logo';
 
 export default class Movies extends Lightning.Component {
@@ -22,5 +22,13 @@ export default class Movies extends Lightning.Component {
         }
       }
     };
+  }
+
+  _handleBack() {
+    Router.back();
+  }
+
+  _getFocused() {
+    return this.tag('Logo');
   }
 }

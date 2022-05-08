@@ -12,16 +12,27 @@ interface MenuItemInterface {
 export default class Menu extends Lightning.Component {
   static _template() {
     return {
+      ShaderExtra: {
+        h: 1080,
+        w: 30,
+        x: 70,
+        rect: true,
+        alpha: 0.8,
+        color: Colors.DARK_GRAY,
+        shader: { type: Lightning.shaders.FadeOut, right: 20 }
+      },
+
       Wrapper: {
         w: 50,
         h: 1080,
+        z: 1,
         rect: true,
         color: Colors.DARK_GRAY,
+        alpha: 0.8,
 
         flex: {
           direction: 'column',
           paddingLeft: 20,
-          paddingRight: 20,
           justifyContent: 'space-between',
           alignContent: 'flex-start',
           wrap: true
@@ -30,9 +41,9 @@ export default class Menu extends Lightning.Component {
         Logo: {
           type: CollapsableLogo,
           y: 50,
-          x: 0,
+          x: 25,
           h: 25,
-          mountX: 0
+          mountX: 0.5
         },
 
         MenuItems: {
@@ -134,10 +145,18 @@ export default class Menu extends Lightning.Component {
     }
 
     this.tag('Wrapper').patch({
-      smooth: { w: 250 }
+      smooth: { w: 250, alpha: 0.95 }
     });
 
-    this.tag('Logo').collapsed = false;
+    this.tag('ShaderExtra').patch({
+      smooth: { x: 270, alpha: 0.95 }
+    });
+
+    // this.tag('Logo').collapsed = false;
+    this.tag('Logo').patch({
+      collapsed: false,
+      x: 125
+    });
 
     this.tag('Focus').w = 0;
     this.tag('Focus').setSmooth('alpha', 1);
@@ -147,10 +166,17 @@ export default class Menu extends Lightning.Component {
   _unfocus() {
     const list = this.tag('Items');
     this.tag('Wrapper').patch({
-      smooth: { w: 50 }
+      smooth: { w: 50, alpha: 0.8 }
     });
 
-    this.tag('Logo').collapsed = true;
+    this.tag('ShaderExtra').patch({
+      smooth: { x: 70, alpha: 0.8 }
+    });
+
+    this.tag('Logo').patch({
+      collapsed: true,
+      x: 25
+    });
 
     for (let i = 0; i < list.children.length; i++) {
       list.children[i].collapsed = true;

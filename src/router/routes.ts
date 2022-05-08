@@ -1,3 +1,5 @@
+import { getDiscoverMovies } from '../lib/services/discover';
+import Details from '../pages/Details';
 import Discover from '../pages/Discover';
 import LiveTV from '../pages/LiveTv';
 import Main from '../pages/Main';
@@ -8,6 +10,9 @@ const routes = [
   {
     path: 'home',
     component: Main,
+    before: async (page: { tmdbData: any }) => {
+      page.tmdbData = await getDiscoverMovies();
+    },
     widgets: ['Menu']
   },
   {
@@ -26,11 +31,9 @@ const routes = [
     widgets: ['Menu']
   },
   {
-    path: '$',
-    // component: Splash
-    component: Main,
-    // widgets: ['MenuWithBackButton']
-    widgets: ['Menu']
+    path: 'movie/:id',
+    component: Details,
+    widgets: ['MenuWithBackButton']
   },
   {
     path: '*',
