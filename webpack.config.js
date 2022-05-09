@@ -11,7 +11,8 @@ const plugins = [
   new CopyWebpackPlugin({
     patterns: [
       { from: path.resolve(__dirname, './public/images'), to: 'images' },
-      { from: path.resolve(__dirname, './public/fonts'), to: 'fonts' }
+      { from: path.resolve(__dirname, './public/fonts'), to: 'fonts' },
+      { from: path.resolve(__dirname, './public/icons'), to: 'icons' }
     ]
   }),
   new DotenvWebpackPlugin()

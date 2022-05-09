@@ -23,8 +23,7 @@ jobs:
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.3.3
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
         with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_KEY }}
           branch: gh-pages # The branch the action should deploy to.
           folder: dist # The folder the action should deploy.
