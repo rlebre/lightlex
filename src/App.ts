@@ -10,6 +10,7 @@ export default class App extends Router.App {
 
   static _template() {
     return {
+      x: 0,
       Background: {
         w: 1920,
         h: 1080,
@@ -17,21 +18,21 @@ export default class App extends Router.App {
         rect: true,
         color: Colors.BACKGROUND
       },
-      ...super._template(),
       Widgets: {
         Menu: {
           type: Menu,
           zIndex: 99,
-          visible: false
+          visible: true
         },
         MenuWithBackButton: {
           type: MenuWithBackButton,
-          x: 68,
-          y: 30,
+          x: 50,
+          y: 50,
           zIndex: 99,
-          visible: true
+          visible: false
         }
-      }
+      },
+      ...super._template()
     };
   }
 

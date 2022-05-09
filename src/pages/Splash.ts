@@ -20,8 +20,8 @@ export default class Splash extends Lightning.Component {
       duration: 2,
       delay: 1,
       actions: [
-        { t: 'Logo', p: 'alpha', v: { 0: 0, 0.25: 0, 1: 1 } },
-        { t: 'Logo', p: 'y', v: { 0: 1080, 1: 440 } }
+        { p: 'alpha', v: { 0: 0, 0.25: 0, 1: 1 } },
+        { p: 'y', v: { 0: 1080, 1: 440 } }
       ]
     });
 

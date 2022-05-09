@@ -1,11 +1,12 @@
 import { Img, Lightning, Router } from '@lightningjs/sdk';
 import List from '../components/list';
 import { MovieSummary } from '../lib/models/movie';
+import { TvShowSummary } from '../lib/models/tvShow';
 
 export default class Main extends Lightning.Component {
   static _template() {
     return {
-      w: 1980,
+      w: 1920 - 150,
       h: 1080,
       x: 150,
 
@@ -89,16 +90,12 @@ export default class Main extends Lightning.Component {
     };
   }
 
-  $itemChanged(item: MovieSummary) {
+  $itemChanged(item: MovieSummary & TvShowSummary) {
     const thumbnail = this.tag('Thumbnail');
 
     this._hideAnimation = thumbnail.setSmooth('alpha', 0.01, { duration: 0.5 });
 
-    thumbnail.on('txLoaded', (texture: any) => {
-      thumbnail.setSmooth('alpha', 1, { duration: 1 });
-    });
-
-    thumbnail.on('txLoaded', (texture: any) => {
+    thumbnail.on('txLoaded', () => {
       thumbnail.setSmooth('alpha', 1, { duration: 1 });
     });
 
@@ -107,8 +104,8 @@ export default class Main extends Lightning.Component {
     });
 
     this.tag('Metadata').patch({
-      Title: { text: { text: item.title } },
-      Year: { text: { text: new Date(item.release_date).getFullYear() } },
+      Title: { text: { text: item.title || item.name } },
+      Year: { text: { text: new Date(item.release_date || item.first_air_date).getFullYear() } },
       Rate: { text: { text: item.vote_average } },
       Overview: { text: { text: item.overview } }
     });
@@ -128,5 +125,11 @@ export default class Main extends Lightning.Component {
 
   _getFocused() {
     return this.tag('MovieList');
+  }
+
+  _active() {
+    // TODO figure out why the back button turns the x to 0
+    //console.log(this.x);
+    this.patch({ x: 150 });
   }
 }

@@ -4,7 +4,7 @@ import Logo from '../components/logo';
 export default class Movies extends Lightning.Component {
   static _template() {
     return {
-      w: 1980,
+      w: 1920,
       h: 1080,
 
       Logo: {

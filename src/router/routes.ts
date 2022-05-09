@@ -1,39 +1,59 @@
 import { getDiscoverMovies } from '../lib/services/discover';
+import { getMovieDetails, getNowPlayingMovies, getPopularMovies } from '../lib/services/movies';
+import { getOnTheAirTvShows } from '../lib/services/tv';
 import Details from '../pages/Details';
-import Discover from '../pages/Discover';
-import LiveTV from '../pages/LiveTv';
 import Main from '../pages/Main';
-import Movies from '../pages/Movies';
 import NotFound from '../pages/NotFound';
+import Splash from '../pages/Splash';
 
 const routes = [
   {
     path: 'home',
-    component: Main,
     before: async (page: { tmdbData: any }) => {
-      page.tmdbData = await getDiscoverMovies();
+      page.tmdbData = await getNowPlayingMovies();
     },
+    component: Main,
     widgets: ['Menu']
   },
   {
+    path: 'movie/:movieId',
+    before: async (page: { tmdbData: any }, { movieId }: { movieId: string }) => {
+      page.tmdbData = await getMovieDetails(movieId);
+    },
+    component: Details,
+    widgets: ['MenuWithBackButton']
+  },
+  {
     path: 'movies',
-    component: Movies,
+    // component: Movies,
+    before: async (page: { tmdbData: any }) => {
+      page.tmdbData = await getPopularMovies();
+    },
+    component: Main,
     widgets: ['Menu']
   },
   {
     path: 'livetv',
-    component: LiveTV,
+    // component: LiveTV,
+    before: async (page: { tmdbData: any }) => {
+      page.tmdbData = await getOnTheAirTvShows();
+    },
+    component: Main,
     widgets: ['Menu']
   },
   {
     path: 'discover',
-    component: Discover,
+    //component: Discover,
+    before: async (page: { tmdbData: any }) => {
+      page.tmdbData = await getDiscoverMovies();
+    },
+    component: Main,
     widgets: ['Menu']
   },
   {
-    path: 'movie/:id',
-    component: Details,
-    widgets: ['MenuWithBackButton']
+    path: '$',
+    component: Splash,
+    widgets: []
   },
   {
     path: '*',

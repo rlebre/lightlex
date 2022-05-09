@@ -3,7 +3,7 @@ import { Lightning, Router } from '@lightningjs/sdk';
 export default class Discover extends Lightning.Component {
   static _template() {
     return {
-      w: 1980,
+      w: 1920,
       h: 1080,
       Lists: {
         x: 300,

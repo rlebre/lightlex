@@ -33,7 +33,7 @@ export default class MenuWithBackButton extends Lightning.Component {
     this.patch({
       TopHeader: {
         BackButton: {
-          smooth: { color: 0xffe50914 }
+          smooth: { color: Colors.ORANGE }
         }
       }
     });
@@ -43,7 +43,7 @@ export default class MenuWithBackButton extends Lightning.Component {
     this.patch({
       TopHeader: {
         BackButton: {
-          smooth: { color: 0xff404249 }
+          smooth: { color: Colors.DARK_GRAY }
         }
       }
     });

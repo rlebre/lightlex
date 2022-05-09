@@ -1,3 +1,5 @@
+import { Genre } from './genre';
+
 export interface Movie {
   id: number;
   title: string;
@@ -16,10 +18,7 @@ export interface Movie {
   original_title: string;
   popularity: number;
   video: boolean;
-  genres: {
-    id: number;
-    name: string;
-  };
+  genres: Genre[];
 }
 
 export interface MovieSummary {
