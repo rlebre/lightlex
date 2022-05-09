@@ -1157,7 +1157,7 @@ eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 "use strict";
-eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst axios_1 = __importDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\nconst API_URL = \"MISSING_ENV_VAR\".API_URL || 'https://api.themoviedb.org/3';\nconst API_KEY = \"MISSING_ENV_VAR\".API_KEY;\nexports[\"default\"] = axios_1.default.create({\n    baseURL: API_URL,\n    params: {\n        api_key: API_KEY,\n        include_adult: false\n    },\n    headers: {\n        'Accept': 'application/json'\n    }\n});\n\n\n//# sourceURL=webpack://com.ruilebre.lightlex/./src/lib/services/api.ts?");
+eval("\nvar __importDefault = (this && this.__importDefault) || function (mod) {\n    return (mod && mod.__esModule) ? mod : { \"default\": mod };\n};\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nconst axios_1 = __importDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\nconst API_URL = \"MISSING_ENV_VAR\".API_URL || 'https://api.themoviedb.org/3';\nconst API_KEY = \"e7f6a898d0a740b529d4b3b005959b15\";\nexports[\"default\"] = axios_1.default.create({\n    baseURL: API_URL,\n    params: {\n        api_key: API_KEY,\n        include_adult: false\n    },\n    headers: {\n        'Accept': 'application/json'\n    }\n});\n\n\n//# sourceURL=webpack://com.ruilebre.lightlex/./src/lib/services/api.ts?");
 
 /***/ }),
 
