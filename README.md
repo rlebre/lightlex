@@ -1,31 +1,31 @@
+<img src="https://github.com/rlebre/lightlex/blob/main/public/images/lightlex.png" alt="logo" width="650"/>
+
 # Lightlex
 
-## com.ruilebre.lightlex
+This app was created using LightningJS. It is a proof of concept to explore the LightningJS SDK and Core features, as Routing, Texture loading, Animations, Transitions, Shapes, and more.
 
-### Getting started
+#### Pre requisites
+Make sure you create a `.env` file containing your [TMDB](https://www.themoviedb.org/) api key or, alternatively, provide it in the API_KEY environment variable. Example of the `.env` file:
 
-> Before you follow the steps below, make sure you have the
-> [Lightning-CLI](https://rdkcentral.github.io/Lightning-CLI/#/) installed _globally_ only your system
-
+```bash
+API_KEY=8e88asdsad89asua
 ```
-npm install -g @lightningjs/cli
-```
+
+More information about how to get the TMDB api key [here](https://www.themoviedb.org/settings/api).
 
 #### Running the App
 
 1. Install the NPM dependencies by running `npm install`
 
-2. Build the App using the _Lightning-CLI_ by running `lng build` inside the root of your project
+2. Build the App using the webpack by runnning `npm run build`
 
 3. Fire up a local webserver and open the App in a browser by running `lng serve` inside the root of your project
 
 #### Developing the App
 
-During development you can use the **watcher** functionality of the _Lightning-CLI_.
+During development you can use the **watcher** functionality of webpack.
 
-- use `lng watch` to automatically _rebuild_ your App whenever you make a change in the `src` or `static` folder
-- use `lng dev` to start the watcher and run a local webserver / open the App in a browser _at the same time_
+```bash
+npm run dev
+```
 
-#### Documentation
-
-Use `lng docs` to open up the Lightning-SDK documentation.
