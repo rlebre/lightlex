@@ -3,66 +3,62 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const path = require('path');
 
-const plugins = [
-  new HtmlWebpackPlugin({
-    template: 'public/index.html',
-    cache: false
-  }),
-  new CopyWebpackPlugin({
-    patterns: [
-      { from: path.resolve(__dirname, './public/images'), to: 'images' },
-      { from: path.resolve(__dirname, './public/fonts'), to: 'fonts' },
-      { from: path.resolve(__dirname, './public/icons'), to: 'icons' }
-    ]
-  }),
-  new DotenvWebpackPlugin()
-];
+module.exports = (_env, argv) => {
+  const isProduction = argv.mode === 'production';
 
-const tsLoaders = [{ loader: 'ts-loader', options: { allowTsInNodeModules: true } }];
-const jsLoaders = [];
-
-const config = {
-  cache: false,
-  entry: ['./src/index.ts'],
-  mode: 'development',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
-  devServer: {
-    host: '0.0.0.0',
-    port: process.env.PORT | 3000,
-    static: path.resolve(__dirname, 'public'),
-    headers: {
-      'Cache-Control': 'no-store'
-    }
-  },
-  plugins,
-  module: {
-    rules: [
-      {
-        test: /\.(ts|tsx)$/i,
-        exclude: ['/node_modules/'],
-        use: tsLoaders
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /node_modules/,
-        use: jsLoaders
-      },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource'
+  return {
+    entry: './src/index.ts',
+    mode: isProduction ? 'production' : 'development',
+    devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      // Hashed in production so GitHub Pages' CDN cache never serves a stale bundle after a deploy
+      filename: isProduction ? 'bundle.[contenthash].js' : 'bundle.js',
+      clean: true
+    },
+    devServer: {
+      host: '0.0.0.0',
+      port: process.env.PORT || 3000,
+      static: path.resolve(__dirname, 'public'),
+      headers: {
+        'Cache-Control': 'no-store'
       }
-    ]
-  },
-  resolve: {
-    extensions: ['.ts', '.js']
-  }
+    },
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: 'public/index.html'
+      }),
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: path.resolve(__dirname, './public/images'), to: 'images' },
+          { from: path.resolve(__dirname, './public/fonts'), to: 'fonts' },
+          { from: path.resolve(__dirname, './public/icons'), to: 'icons' }
+        ]
+      }),
+      // systemvars lets CI provide API_KEY as an environment variable instead of a .env file
+      new DotenvWebpackPlugin({ systemvars: true, silent: true })
+    ],
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/i,
+          use: 'ts-loader',
+          exclude: /node_modules/
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource'
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/i,
+          type: 'asset/resource'
+        }
+      ]
+    },
+    resolve: {
+      extensions: ['.ts', '.js']
+    },
+    // Single-bundle TV app: the default 244 KiB web budget isn't meaningful here
+    performance: { hints: false }
+  };
 };
-
-module.exports = config;

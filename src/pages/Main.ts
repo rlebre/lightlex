@@ -90,18 +90,21 @@ export default class Main extends Lightning.Component {
     };
   }
 
+  _init() {
+    const thumbnail = this.tag('Thumbnail');
+    thumbnail.on('txLoaded', () => thumbnail.setSmooth('alpha', 1, { duration: 1 }));
+  }
+
   $itemChanged(item: MovieSummary & TvShowSummary) {
     const thumbnail = this.tag('Thumbnail');
 
-    this._hideAnimation = thumbnail.setSmooth('alpha', 0.01, { duration: 0.5 });
+    thumbnail.setSmooth('alpha', 0.01, { duration: 0.5 });
+    thumbnail.texture = Img(`https://image.tmdb.org/t/p/original${item.backdrop_path}`).contain(1920 * 0.6, 1080 * 0.6);
 
-    thumbnail.on('txLoaded', () => {
+    // txLoaded only fires when the displayed texture source changes, so an already-loaded texture must be faded in here
+    if (thumbnail.texture.isLoaded()) {
       thumbnail.setSmooth('alpha', 1, { duration: 1 });
-    });
-
-    thumbnail.patch({
-      texture: Img(`https://image.tmdb.org/t/p/original${item.backdrop_path}`).contain(1920 * 0.6, 1080 * 0.6)
-    });
+    }
 
     this.tag('Metadata').patch({
       Title: { text: { text: item.title || item.name } },

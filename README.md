@@ -4,28 +4,34 @@
 
 This app was created using LightningJS. It is a proof of concept to explore the LightningJS SDK and Core features, as Routing, Texture loading, Animations, Transitions, Shapes, and more.
 
-#### Pre requisites
-Make sure you create a `.env` file containing your [TMDB](https://www.themoviedb.org/) api key or, alternatively, provide it in the API_KEY environment variable. Example of the `.env` file:
+#### Prerequisites
+
+- Node.js 22.22+ (the version used in CI is pinned in `.node-version`)
+- Yarn 1 (`corepack enable` provides it)
+- A [TMDB](https://www.themoviedb.org/) API key, provided either in a `.env` file or in the `API_KEY` environment variable. Example `.env`:
 
 ```bash
 API_KEY=8e88asdsad89asua
 ```
 
-More information about how to get the TMDB api key [here](https://www.themoviedb.org/settings/api).
-
-#### Running the App
-
-1. Install the NPM dependencies by running `npm install`
-
-2. Build the App using the webpack by runnning `npm run build`
-
-3. Fire up a local webserver and open the App in a browser by running `lng serve` inside the root of your project
+More information about how to get the TMDB API key [here](https://www.themoviedb.org/settings/api).
 
 #### Developing the App
 
-During development you can use the **watcher** functionality of webpack.
-
 ```bash
-npm run dev
+yarn install
+yarn dev        # webpack-dev-server on http://localhost:3000 (override with PORT)
 ```
 
+#### Building the App
+
+```bash
+yarn typecheck
+yarn build      # production bundle in dist/
+```
+
+`dist/` is a static site and can be served from any sub-path (all asset URLs are relative).
+
+#### Deployment
+
+Every push to `main` runs `.github/workflows/gh-pages.yml`, which builds the app with the `API_KEY` repository secret and publishes `dist/` to the `gh-pages` branch, served at https://rlebre.github.io/lightlex/. Pull requests only run the build check in `.github/workflows/webpack.yml`.
