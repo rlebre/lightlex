@@ -67,8 +67,8 @@ export default class MenuItem extends Lightning.Component {
   set selected(bool) {
     if (bool) {
       this.patch({
-        Icon: { color: Colors.ORANGE },
-        text: { textColor: Colors.ORANGE, alpha: 0.6 }
+        Icon: { color: Colors.ACCENT },
+        text: { textColor: Colors.ACCENT, alpha: 0.6 }
       });
     } else {
       this.patch({
@@ -85,8 +85,8 @@ export default class MenuItem extends Lightning.Component {
 
   _focus() {
     this.patch({
-      Icon: { color: Colors.ORANGE },
-      text: { textColor: Colors.ORANGE }
+      Icon: { color: Colors.ACCENT },
+      text: { textColor: Colors.ACCENT }
     });
   }
 

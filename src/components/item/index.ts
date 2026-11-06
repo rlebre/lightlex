@@ -1,4 +1,5 @@
 import { Lightning } from '@lightningjs/sdk';
+import { Colors } from '../../constants/colors';
 
 export default class Item extends Lightning.Component {
   static _template() {
@@ -24,7 +25,7 @@ export default class Item extends Lightning.Component {
         shader: {
           type: Lightning.shaders.RoundedRectangle,
           stroke: 4,
-          strokeColor: 0xffffffff,
+          strokeColor: Colors.ACCENT,
           fillColor: 0x00ffffff,
           radius: 15,
           blend: 1

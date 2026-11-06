@@ -8,7 +8,7 @@ export default class MenuWithBackButton extends Lightning.Component {
         BackButton: {
           h: 80,
           w: 80,
-          color: Colors.DARK_GRAY,
+          color: Colors.SURFACE,
           rect: true,
           rtt: true,
           Icon: {
@@ -25,6 +25,9 @@ export default class MenuWithBackButton extends Lightning.Component {
     };
   }
 
+  // Consume Left so the Router doesn't hand focus back to the page (see Menu._handleLeft)
+  _handleLeft() {}
+
   _handleRight() {
     Router.restoreFocus();
   }
@@ -33,7 +36,8 @@ export default class MenuWithBackButton extends Lightning.Component {
     this.patch({
       TopHeader: {
         BackButton: {
-          smooth: { color: Colors.ORANGE }
+          smooth: { color: Colors.ACCENT },
+          Icon: { smooth: { color: Colors.BACKGROUND } }
         }
       }
     });
@@ -43,7 +47,8 @@ export default class MenuWithBackButton extends Lightning.Component {
     this.patch({
       TopHeader: {
         BackButton: {
-          smooth: { color: Colors.DARK_GRAY }
+          smooth: { color: Colors.SURFACE },
+          Icon: { smooth: { color: Colors.WHITE } }
         }
       }
     });

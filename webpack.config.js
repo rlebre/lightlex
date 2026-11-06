@@ -3,8 +3,21 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
 const path = require('path');
 
+// Make .env values (e.g. PORT) visible to this config too, not only to the bundle via dotenv-webpack
+try {
+  process.loadEnvFile();
+} catch {
+  // no .env file
+}
+
 module.exports = (_env, argv) => {
   const isProduction = argv.mode === 'production';
+
+  if (!process.env.API_KEY) {
+    console.warn(
+      '\x1b[33m⚠ API_KEY is not set (add it to .env or the environment): every TMDB request will fail with 401.\x1b[0m'
+    );
+  }
 
   return {
     entry: './src/index.ts',
@@ -18,6 +31,7 @@ module.exports = (_env, argv) => {
     },
     devServer: {
       host: '0.0.0.0',
+      // Override with `pnpm dev --port 4000`, `PORT=4000 pnpm dev`, or PORT=4000 in .env
       port: process.env.PORT || 3000,
       static: path.resolve(__dirname, 'public'),
       headers: {

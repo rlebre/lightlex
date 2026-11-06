@@ -1,0 +1,6 @@
+# Dependency install scripts that are deliberately not run:
+# - @lightningjs/sdk copies files into ./support for the Lightning CLI (lng) build, which this webpack project doesn't use
+# - core-js only prints a postinstall banner
+allowBuilds:
+  '@lightningjs/sdk': false
+  core-js: false

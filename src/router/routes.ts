@@ -2,6 +2,7 @@ import { getDiscoverMovies } from '../lib/services/discover';
 import { getMovieDetails, getNowPlayingMovies, getPopularMovies } from '../lib/services/movies';
 import { getOnTheAirTvShows } from '../lib/services/tv';
 import Details from '../pages/Details';
+import ErrorPage from '../pages/ErrorPage';
 import Main from '../pages/Main';
 import NotFound from '../pages/NotFound';
 import Splash from '../pages/Splash';
@@ -53,6 +54,11 @@ const routes = [
   {
     path: '$',
     component: Splash,
+    widgets: []
+  },
+  {
+    path: '!',
+    component: ErrorPage,
     widgets: []
   },
   {

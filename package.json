@@ -8,8 +8,10 @@
     "url": "https://ruilebre.com"
   },
   "engines": {
-    "node": ">=22.22.1"
+    "node": ">=22.22.1",
+    "pnpm": ">=12"
   },
+  "packageManager": "pnpm@12.16.1",
   "scripts": {
     "dev": "webpack serve",
     "build": "webpack --mode production",

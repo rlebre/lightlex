@@ -1,11 +1,7 @@
+// Lightlex palette (ARGB). Accent matches the logo's amber in public/images/lightlex-*.svg.
 export const enum Colors {
-  BACKGROUND = 0xff333333,
-  ORANGE = 0xffe5a10d,
-  LIGHT_GRAY = 0xffd6d6d6,
-  DARK_GRAY = 0xff262626,
-  grey = 0xff484b4f,
-  yellow = 0xfffed20a,
-  green = 0xffaaea69,
-  pink = 0xffec74ac,
+  BACKGROUND = 0xff17161a, // warm black
+  SURFACE = 0xff1f1d24, // menu / button backgrounds, a step above BACKGROUND
+  ACCENT = 0xfff5b83d, // amber: focus, selection
   WHITE = 0xffffffff
 }

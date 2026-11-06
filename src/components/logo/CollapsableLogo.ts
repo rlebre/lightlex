@@ -3,14 +3,13 @@ import { Colors } from '../../constants/colors';
 
 export default class CollapsableLogo extends Lightning.Component {
   _construct() {
-    this._cenas = 0;
-    this._expandedTexture = Lightning.Tools.getSvgTexture('images/lightlex-light.svg', 150, 25);
-    this._collapsedTexture = Lightning.Tools.getSvgTexture('images/lightlex-icon.svg', 40, 40);
+    this._expandedTexture = Lightning.Tools.getSvgTexture('images/lightlex-light.svg', 137, 28);
+    this._collapsedTexture = Lightning.Tools.getSvgTexture('images/lightlex-icon.svg', 32, 32);
   }
 
   static _template() {
     return {
-      texture: Lightning.Tools.getSvgTexture('images/lightlex-icon.svg', 40, 40),
+      texture: Lightning.Tools.getSvgTexture('images/lightlex-icon.svg', 32, 32),
       color: Colors.WHITE
     };
   }

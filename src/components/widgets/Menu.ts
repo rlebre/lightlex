@@ -18,7 +18,7 @@ export default class Menu extends Lightning.Component {
         x: 70,
         rect: true,
         alpha: 0.8,
-        color: Colors.DARK_GRAY,
+        color: Colors.SURFACE,
         shader: { type: Lightning.shaders.FadeOut, right: 20 }
       },
 
@@ -27,7 +27,7 @@ export default class Menu extends Lightning.Component {
         h: 1080,
         z: 1,
         rect: true,
-        color: Colors.DARK_GRAY,
+        color: Colors.SURFACE,
         alpha: 0.8,
 
         flex: {
@@ -42,7 +42,6 @@ export default class Menu extends Lightning.Component {
           type: CollapsableLogo,
           y: 50,
           x: 25,
-          h: 25,
           mountX: 0.5
         },
 
@@ -55,8 +54,8 @@ export default class Menu extends Lightning.Component {
           },
           Focus: {
             rect: true,
-            colorLeft: Colors.ORANGE,
-            colorRight: Colors.ORANGE,
+            colorLeft: Colors.ACCENT,
+            colorRight: Colors.ACCENT,
             x: 40,
             h: 6,
             shader: { type: Lightning.shaders.RoundedRectangle, radius: 3 },
@@ -131,6 +130,14 @@ export default class Menu extends Lightning.Component {
     if (this._index < this.tag('Items').children.length - 1) {
       this._select(1);
     }
+  }
+
+  // The Router hands focus back to the page on any key a widget leaves unhandled,
+  // so Left must be consumed here or a second Left press would close the menu.
+  _handleLeft() {}
+
+  _handleRight() {
+    Router.restoreFocus();
   }
 
   _handleEnter() {

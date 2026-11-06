@@ -1,4 +1,7 @@
-<img src="https://github.com/rlebre/lightlex/blob/main/public/images/lightlex.png" alt="logo" width="650"/>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="public/images/lightlex-light.svg">
+  <img src="public/images/lightlex.svg" alt="Lightlex" width="420">
+</picture>
 
 # Lightlex
 
@@ -6,8 +9,7 @@ This app was created using LightningJS. It is a proof of concept to explore the 
 
 #### Prerequisites
 
-- Node.js 22.22+ (the version used in CI is pinned in `.node-version`)
-- Yarn 1 (`corepack enable` provides it)
+- [mise](https://mise.jdx.dev/), which installs the Node.js and pnpm versions pinned in `mise.toml` (run `mise install` in the project root)
 - A [TMDB](https://www.themoviedb.org/) API key, provided either in a `.env` file or in the `API_KEY` environment variable. Example `.env`:
 
 ```bash
@@ -19,15 +21,23 @@ More information about how to get the TMDB API key [here](https://www.themoviedb
 #### Developing the App
 
 ```bash
-yarn install
-yarn dev        # webpack-dev-server on http://localhost:3000 (override with PORT)
+mise install
+pnpm install
+pnpm dev        # webpack-dev-server on http://localhost:3000
+```
+
+To use a different port, pass `--port` or set `PORT` (in the environment or in `.env`):
+
+```bash
+pnpm dev --port 4000
+PORT=4000 pnpm dev
 ```
 
 #### Building the App
 
 ```bash
-yarn typecheck
-yarn build      # production bundle in dist/
+pnpm typecheck
+pnpm build      # production bundle in dist/
 ```
 
 `dist/` is a static site and can be served from any sub-path (all asset URLs are relative).
