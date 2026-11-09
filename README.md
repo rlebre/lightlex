@@ -1,7 +1,6 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="public/images/lightlex-light.svg">
-  <img src="public/images/lightlex.svg" alt="Lightlex" width="420">
-</picture>
+<img src="public/images/lightlex-banner.svg" alt="Lightlex" width="640">
+
+**Live:** https://ruilebre.com/lightlex/
 
 # Lightlex
 
@@ -44,4 +43,4 @@ pnpm build      # production bundle in dist/
 
 #### Deployment
 
-Every push to `main` runs `.github/workflows/gh-pages.yml`, which builds the app with the `API_KEY` repository secret and publishes `dist/` to the `gh-pages` branch, served at https://rlebre.github.io/lightlex/. Pull requests only run the build check in `.github/workflows/webpack.yml`.
+Every push to `main` runs `.github/workflows/gh-pages.yml`, which builds the app with the `API_KEY` repository secret and publishes `dist/` to the `gh-pages` branch, served at https://rlebre.github.io/lightlex/. It is also available at https://ruilebre.com/lightlex/, which proxies to GitHub Pages. Pull requests only run the build check in `.github/workflows/webpack.yml`.
