@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DotenvWebpackPlugin = require('dotenv-webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 // Make .env values (e.g. PORT) visible to this config too, not only to the bundle via dotenv-webpack
@@ -71,6 +72,11 @@ module.exports = (_env, argv) => {
     },
     resolve: {
       extensions: ['.ts', '.js']
+    },
+    optimization: {
+      // Lightning's state machine finds states by class name (e.g. the Router's 'Widgets' state behind
+      // Router.focusWidget), so minification must not drop or mangle class names.
+      minimizer: [new TerserPlugin({ terserOptions: { keep_classnames: true } })]
     },
     // Single-bundle TV app: the default 244 KiB web budget isn't meaningful here
     performance: { hints: false }
